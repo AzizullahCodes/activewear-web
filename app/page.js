@@ -27,20 +27,20 @@ import stepFour from '../public/stepFour.jpg';
 const testimonialsData = [
   {
     id: 1,
-    author: "Zaish",
+    author: "Satish",
     quote:
       "Active Wear has always been my go-to supplier for all marketing related products, specially the clothing for branding. They are very responsive, and have always delivered on time. Their marketing domain is quite extensive and has a range of solutions from IT related to printing. Highly recommendable!",
     logo: (
       <div className="logoZaish">
-        <span className="zaishZ">Z</span>
-        <span className="zaishText">aish</span>
-        <span className="zaishSub">ENERGY</span>
+        <span className="zaishZ">M</span>
+        <span className="zaishText">AERSK</span>
+        
       </div>
     )
   },
   {
     id: 2,
-    author: "Hakimi Sports",
+    author: "Zaish",
     quote:
       "Good quality work. Whenever we have any requirements of sports wear we always choose Cre8iveline because of their quality and also timely delivery.",
     logo: (
@@ -48,7 +48,9 @@ const testimonialsData = [
         <svg viewBox="0 0 24 24" width="28" height="28" fill="#c91818">
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
         </svg>
-        <span className="logoTitle">HAKIMI SPORTS</span>
+        {/* <span className="logoTitle">ZAISH</span> */}
+         <span className="zaishZ">Z</span>
+        <span className="zaishText">AISH</span>
       </div>
     )
   },
