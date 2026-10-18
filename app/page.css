@@ -106,24 +106,279 @@ body {
 .processSection { width: 100%; padding: 60px 24px; background-color: #000000; font-family: sans-serif; color: #ffffff; }
 .processContainer { max-width: 1200px; margin: 0 auto; }
 .processHeaderRow { display: flex; justify-content: center; align-items: center; gap: 16px; margin-bottom: 50px; flex-wrap: wrap; }
-.processMainHeading { font-size: 34px; font-weight: 900; font-style: italic; color: #ffffff; margin: 0; letter-spacing: -0.5px; }
-.processSubBadge { background-color: #c91818; color: #ffffff; font-size: 12px; font-weight: 800; padding: 4px 12px; border-radius: 2px; letter-spacing: 0.5px; }
+.processMainHeading { font-size: 40px; font-weight: 900; font-style: italic; color: #ffffff; margin: 0; letter-spacing: -0.5px; }
+.processSubBadge { background-color: #c91818; color: #ffffff; font-size: 20px; font-weight: 800; padding: 4px 12px; border-radius: 2px; letter-spacing: 0.5px; }
 .stepsFlexGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
 .stepBlock { display: flex; flex-direction: column; }
-.stepIconRow { height: 50px; display: flex; align-items: center; margin-bottom: 20px; }
+.stepIconRow { height: 140px; display: flex; align-items: center; margin-bottom: 20px; }
 .stepIconImage { height: 100%; width: auto; object-fit: contain; }
-.stepTitle { font-size: 16px; font-weight: 800; color: #ffffff; margin: 0 0 10px 0; }
-.stepText { font-size: 13px; color: #aaaaaa; line-height: 1.5; margin: 0; text-align: left; }
+.stepTitle { font-size: 20px; font-weight: 800; color: #ffffff; margin: 0 0 10px 0; }
+.stepText { font-size: 16px; color: #aaaaaa; line-height: 1.5; margin: 0; text-align: left; }
 /* TESTIMONIAL VIEWPORT & BRANDS */
-.testimonialSection { width: 100%; padding: 80px 24px; background-color: #ffffff; font-family: sans-serif; text-align: center; }
-.testimonialContainer { max-width: 900px; margin: 0 auto; }
-.testimonialHeading { font-size: 32px; font-weight: 800; color: #111111; margin: 0 0 40px 0; }
-.sliderViewport { display: flex; align-items: center; justify-content: space-between; gap: 30px; margin-top: 20px; }
-.sliderArrow { font-size: 32px; color: #bbbbbb; cursor: pointer; user-select: none; transition: color 0.2s; }
-.sliderArrow:hover { color: #c91818; }
-.testimonialBodyText { font-size: 16px; font-style: italic; color: #555555; line-height: 1.8; font-weight: 500; }
-.clientAuthor { display: block; font-style: normal; font-size: 14px; font-weight: 700; color: #111111; margin-top: 24px; text-transform: uppercase; }
+/* ==========================================================
+   7. TRUSTED CLIENT TESTIMONIAL (SCREENSHOT MATCH & AUTO-SLIDER)
+   ========================================================== */
+.testimonialSection {
+  width: 100%;
+  padding: 70px 24px 80px 24px;
+  background-color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  text-align: center;
+}
 
+.testimonialContainer {
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.testimonialHeading {
+  font-size: 34px;
+  font-weight: 800;
+  color: #111111;
+  letter-spacing: -0.5px;
+  margin: 0 0 35px 0;
+}
+
+.sliderViewport {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  position: relative;
+}
+
+/* Slide Chevron Arrows */
+.sliderArrow {
+  background: transparent;
+  border: none;
+  font-size: 36px;
+  line-height: 1;
+  color: #444444;
+  cursor: pointer;
+  padding: 10px 14px;
+  user-select: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.sliderArrow:hover {
+  color: #000000;
+  transform: scale(1.15);
+}
+
+/* Slide Inner Card */
+.testimonialCard {
+  flex: 1;
+  max-width: 730px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: testimonialFade 0.4s ease-in-out;
+}
+
+/* Logos styling */
+.clientLogoContainer {
+  margin-bottom: 24px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Zaish Logo replication */
+.logoZaish {
+  display: inline-flex;
+  align-items: baseline;
+  position: relative;
+  user-select: none;
+}
+
+.zaishZ {
+  font-size: 34px;
+  font-weight: 900;
+  color: #ff3b00;
+  line-height: 1;
+  letter-spacing: -2px;
+  display: inline-block;
+  transform: skewX(-6deg);
+}
+
+.zaishText {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a2a3a;
+  letter-spacing: -0.5px;
+}
+
+.zaishSub {
+  font-size: 8px;
+  font-weight: 800;
+  color: #ff3b00;
+  letter-spacing: 1.5px;
+  position: absolute;
+  right: 0;
+  bottom: -9px;
+}
+
+/* Logo wrappers for other 3 slides */
+.logoHakimi, .logoApex, .logoVelocity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logoTitle {
+  font-size: 16px;
+  font-weight: 800;
+  color: #111111;
+  letter-spacing: 1px;
+}
+
+/* Testimonial body text in italic (matching screenshot) */
+.testimonialBodyText {
+  font-size: 15px;
+  font-style: italic;
+  color: #555555;
+  line-height: 1.65;
+  margin: 0 0 20px 0;
+  text-align: center;
+  font-weight: 400;
+}
+
+/* Author name */
+.clientAuthor {
+  font-size: 14.5px;
+  font-style: italic;
+  font-weight: 700;
+  color: #111111;
+  margin: 0;
+}
+
+/* 4 Centered Circular Dots */
+.sliderDots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 35px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: #d1d5db;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.dot.activeDot {
+  background-color: #111111;
+  transform: scale(1.2);
+}
+
+@keyframes testimonialFade {
+  from {
+    opacity: 0.3;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Brand Logo */
+.clientLogoWrapper {
+  margin-bottom: 24px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clientLogoImg {
+  max-height: 45px;
+  max-width: 140px;
+  object-fit: contain;
+}
+
+/* Italic Quote Text */
+.testimonialBodyText {
+  font-size: 15.5px;
+  font-style: italic;
+  color: #555555;
+  line-height: 1.65;
+  margin: 0 0 22px 0;
+  text-align: center;
+  font-weight: 400;
+}
+
+/* Author Name */
+.clientAuthor {
+  font-size: 14.5px;
+  font-style: italic;
+  font-weight: 700;
+  color: #111111;
+  margin: 0;
+}
+
+/* 4 Circular Dots */
+.sliderDots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 36px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: #d1d5db;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.dot.activeDot {
+  background-color: #111111;
+  transform: scale(1.15);
+}
+
+/* Smooth Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0.3;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .testimonialHeading {
+    font-size: 26px;
+  }
+  .sliderViewport {
+    gap: 8px;
+  }
+  .sliderArrow {
+    font-size: 28px;
+    padding: 6px 8px;
+  }
+  .testimonialBodyText {
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+}
 .brandsStripSection { width: 100%; padding: 40px 24px 50px 24px; background-color: #ffffff; font-family: sans-serif; border-top: 1px dashed #eaeaea; text-align: center; }
 .brandsStripContainer { max-width: 1200px; margin: 0 auto; }
 .brandSectionLabel { display: block; font-size: 13px; font-weight: 700; color: #222222; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 36px; }

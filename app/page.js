@@ -1,6 +1,102 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect ,useRef} from 'react';
+import Image from 'next/image';
+import sportJursey from '../public/sportJursey.jpg'
+import sportJurseyRightUp from '../public/sportJurseyRightUp.jpg'
+import sportsJurseyDown from '../public/sportsJurseyDown.jpg'
+import designerStudio from '../public/designerStudio.jpg'
+import casualWear from '../public/casualWear.jpg'
+import sportWear from '../public/sportWear.jpg'
+import gymWear from '../public/gymWear.jpg'
+import industrialWear from '../public/industrialWear.jpg'
+import restaurants from '../public/restaurants.jpg'
+import saloon from '../public/saloon.jpg'
+import sportslogo from '../public/sportslogo.jpg'
+import bags from '../public/bags.jpg'
+import bottles from '../public/bottles.jpg'
+import caps from '../public/caps.jpg'
+import Towels from '../public/towels.jpg'
+import trophy from '../public/trophy.jpg'
+import stepOne from '../public/stepOne.jpg'
+import stepTwo from '../public/stepTwo.jpg'
+import stepThree from '../public/stepThree.jpg'
+import stepFour from '../public/stepFour.jpg';
+
+// 4 Complete Testimonials with inline SVGs matching your screenshot
+const testimonialsData = [
+  {
+    id: 1,
+    author: "Zaish",
+    quote:
+      "Active Wear has always been my go-to supplier for all marketing related products, specially the clothing for branding. They are very responsive, and have always delivered on time. Their marketing domain is quite extensive and has a range of solutions from IT related to printing. Highly recommendable!",
+    logo: (
+      <div className="logoZaish">
+        <span className="zaishZ">Z</span>
+        <span className="zaishText">aish</span>
+        <span className="zaishSub">ENERGY</span>
+      </div>
+    )
+  },
+  {
+    id: 2,
+    author: "Hakimi Sports",
+    quote:
+      "Good quality work. Whenever we have any requirements of sports wear we always choose Cre8iveline because of their quality and also timely delivery.",
+    logo: (
+      <div className="logoHakimi">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="#c91818">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+        </svg>
+        <span className="logoTitle">HAKIMI SPORTS</span>
+      </div>
+    )
+  },
+  {
+    id: 3,
+    author: "Apex Athletics",
+    quote:
+      "Exceptional stitching and fabric durable enough for international league games. Turnaround times were faster than estimated and customer communication was flawless.",
+    logo: (
+      <div className="logoApex">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="#111111">
+          <path d="M12 2L1 21h22L12 2zm0 4.5l6.5 12.5h-13L12 6.5z" />
+        </svg>
+        <span className="logoTitle">APEX ATHLETICS</span>
+      </div>
+    )
+  },
+  {
+    id: 4,
+    author: "Velocity Club",
+    quote:
+      "Consistent sublimation printing quality and premium breathable mesh materials. Our reliable manufacturing partner for three seasons straight.",
+    logo: (
+      <div className="logoVelocity">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="#c91818">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+        </svg>
+        <span className="logoTitle">VELOCITY CLUB</span>
+      </div>
+    )
+  }
+];
+
+const faqData = [
+  {
+    q: "What is your minimum order quantity (MOQ)?",
+    a: "Our standard minimum order quantity starts at 20-25 pieces per design for custom sportswear orders."
+  },
+  {
+    q: "Can you create custom sublimation designs and private labels?",
+    a: "Yes, we specialize in full dye-sublimation, screen printing, embroidery, and private labeling tailored to your team or brand specifications."
+  },
+  {
+    q: "What is the typical production and delivery turnaround time?",
+    a: "Typical production takes 10 to 18 business days after digital mockups and sizing sheets are finalized and approved."
+  }
+];
+
 import Link from 'next/link';
 import { FaWhatsapp, FaCheck, FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa';
 import Topbar from "@/components/topbar/topbar";
@@ -8,6 +104,10 @@ import Navbar from "@/components/navbar/navbar";
 import './page.css';
 
 export default function Home() {
+const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [activeFaq, setActiveFaq] = useState(null);
+  const autoPlayRef = useRef(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const [faqOpen, setFaqOpen] = useState([true, false, false, false]);
 
@@ -23,10 +123,29 @@ export default function Home() {
     }, 1000); 
   };
 
-  const toggleFaq = (index) => {
-    setFaqOpen(faqOpen.map((item, idx) => idx === index ? !item : item));
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? testimonialsData.length - 1 : prev - 1));
   };
 
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev === testimonialsData.length - 1 ? 0 : prev + 1));
+  };
+
+  // Auto Slider Timer (4.5s) with pause on hover
+  useEffect(() => {
+    if (!isPaused) {
+      autoPlayRef.current = setInterval(() => {
+        nextSlide();
+      }, 4500);
+    }
+    return () => {
+      if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+    };
+  }, [isPaused, currentSlide]);
+
+  const toggleFaq = (index) => {
+    setActiveFaq((prev) => (prev === index ? null : index));
+  }
   return (
     <div>
       {/* GLOBAL NAVBAR MODULES */}
@@ -78,11 +197,11 @@ export default function Home() {
         <div className="showcaseContainer">
           <div className="showcaseGrid">
             <div className="gridLeftCol">
-              <div className="showcaseCard mainJerseyCard"><img src="/sports-jersey.jpg" alt="Jersey Kits" className="cardImage" /></div>
+              <div className="showcaseCard mainJerseyCard"><Image src={sportJursey} alt="Jersey Kits" className="cardImage" /></div>
             </div>
             <div className="gridRightCol">
-              <div className="showcaseCard promoCard"><img src="/promotional-items.jpg" alt="Promo Uniforms" className="cardImage" /></div>
-              <div className="showcaseCard workwearCard"><img src="/workwear-uniform.jpg" alt="Workwear Apparel" className="cardImage" /></div>
+              <div className="showcaseCard promoCard"><Image src={sportJurseyRightUp} alt="Promo Uniforms" className="cardImage" /></div>
+              <div className="showcaseCard workwearCard"><Image src={sportsJurseyDown} alt="Workwear Apparel" className="cardImage" /></div>
             </div>
           </div>
 
@@ -126,7 +245,7 @@ export default function Home() {
             </div>
           </div>
           <div className="whyChooseGraphicWrapper">
-            <div className="studioImageCard"><img src="/designer-studio.jpg" alt="Designer Studio" className="cardImage" /></div>
+            <div className="studioImageCard"><Image src={designerStudio} alt="Designer Studio" className="cardImage" /></div>
             <div className="decorativeDotPattern"></div>
           </div>
         </div>
@@ -137,19 +256,19 @@ export default function Home() {
           <h2 className="productsSectionHeading">Our Best Selling Products</h2>
           <div className="productsGrid">
             <div className="productCard">
-              <div className="productImageWrapper"><img src="/casual-wear.jpg" alt="Casual Wear" className="productImage" /></div>
+              <div className="productImageWrapper"><Image src={casualWear} alt="Casual Wear" className="productImage" /></div>
               <div className="productCardFooter"><h3 className="productTitle">CASUAL WEAR</h3></div>
             </div>
             <div className="productCard">
-              <div className="productImageWrapper"><img src="/sports-wear.jpg" alt="Sports Wear" className="productImage" /></div>
+              <div className="productImageWrapper"><Image src={sportWear} alt="Sports Wear" className="productImage" /></div>
               <div className="productCardFooter"><h3 className="productTitle">SPORTS WEAR</h3></div>
             </div>
             <div className="productCard">
-              <div className="productImageWrapper"><img src="/gym-wear.jpg" alt="Gym Wear" className="productImage" /></div>
+              <div className="productImageWrapper"><Image src={gymWear} alt="Gym Wear" className="productImage" /></div>
               <div className="productCardFooter"><h3 className="productTitle">GYM WEAR</h3></div>
             </div>
             <div className="productCard">
-              <div className="productImageWrapper"><img src="/industrial-wear.jpg" alt="Industrial Wear" className="productImage" /></div>
+              <div className="productImageWrapper"><Image src={industrialWear} alt="Industrial Wear" className="productImage" /></div>
               <div className="productCardFooter"><h3 className="productTitle">INDUSTRIAL WEAR</h3></div>
             </div>
           </div>
@@ -168,35 +287,35 @@ export default function Home() {
           
           <div className="circleItemsGrid">
             <div className="circleCard">
-              <div className="circleFrame"><img src="/cat-restaurant.png" alt="Restaurant" /></div>
+              <div className="circleFrame"><Image src={restaurants} alt="Restaurant" /></div>
               <span className="circleTitle">Restaurant</span>
             </div>
             <div className="circleCard">
-              <div className="circleFrame"><img src="/cat-salon.png" alt="Salon & Spa" /></div>
+              <div className="circleFrame"><Image src={saloon} alt="Salon & Spa" /></div>
               <span className="circleTitle">Salon & Spa</span>
             </div>
             <div className="circleCard">
-              <div className="circleFrame"><img src="/cat-bags.png" alt="Bags" /></div>
+              <div className="circleFrame"><Image src={bags} alt="Bags" /></div>
               <span className="circleTitle">Bags</span>
             </div>
             <div className="circleCard">
-              <div className="circleFrame"><img src="/cat-bottles.png" alt="Bottles" /></div>
+              <div className="circleFrame"><Image src={bottles} alt="Bottles" /></div>
               <span className="circleTitle">Bottles</span>
             </div>
             <div className="circleCard">
-              <div className="circleFrame"><img src="/cat-caps.png" alt="Caps" /></div>
+              <div className="circleFrame"><Image src={caps} alt="Caps" /></div>
               <span className="circleTitle">Caps</span>
             </div>
             <div className="circleCard">
-              <div className="circleFrame"><img src="/cat-towels.png" alt="Towels" /></div>
+              <div className="circleFrame"><Image src={Towels} alt="Towels" /></div>
               <span className="circleTitle">Towels</span>
             </div>
             <div className="circleCard">
-              <div className="circleFrame"><img src="/cat-logo.png" alt="Sports Logo" /></div>
+              <div className="circleFrame"><Image src={sportslogo} alt="Sports Logo" /></div>
               <span className="circleTitle">Sports Logo</span>
             </div>
             <div className="circleCard">
-              <div className="circleFrame"><img src="/cat-trophy.png" alt="Trophy" /></div>
+              <div className="circleFrame"><Image src={trophy} alt="Trophy" /></div>
               <span className="circleTitle">Trophy</span>
             </div>
           </div>
@@ -212,22 +331,22 @@ export default function Home() {
           
           <div className="stepsFlexGrid">
             <div className="stepBlock">
-              <div className="stepIconRow"><img src="/icon-step1.png" alt="Step 1" className="stepIconImage" /></div>
+              <div className="stepIconRow"><Image src={stepOne} alt="Step 1" className="stepIconImage" /></div>
               <h3 className="stepTitle">Step 1</h3>
               <p className="stepText">Submit a design request via the form at the bottom of any jersey/apparel page.</p>
             </div>
             <div className="stepBlock">
-              <div className="stepIconRow"><img src="/icon-step2.png" alt="Step 2" className="stepIconImage" /></div>
+              <div className="stepIconRow"><Image src={stepTwo} alt="Step 2" className="stepIconImage" /></div>
               <h3 className="stepTitle">Step 2</h3>
               <p className="stepText">Your personal designer will create your customs on your own private webpage.</p>
             </div>
             <div className="stepBlock">
-              <div className="stepIconRow"><img src="/icon-step3.png" alt="Step 3" className="stepIconImage" /></div>
+              <div className="stepIconRow"><Image src={stepThree} alt="Step 3" className="stepIconImage" /></div>
               <h3 className="stepTitle">Step 3</h3>
               <p className="stepText">Pick your designs and submit your order via our online form. We'll send an invoice for easy payment.</p>
             </div>
             <div className="stepBlock">
-              <div className="stepIconRow"><img src="/icon-step4.png" alt="Step 4" className="stepIconImage" /></div>
+              <div className="stepIconRow"><Image src={stepFour} alt="Step 4" className="stepIconImage" /></div>
               <h3 className="stepTitle">Step 4</h3>
               <p className="stepText">Approve your production art and manufacturing begins. Your order will be shipped via free UPS Ground.</p>
             </div>
@@ -236,22 +355,67 @@ export default function Home() {
       </section>
 
       {/* 7. TRUSTED CLIENT TESTIMONIAL SECTION */}
-      <section className="testimonialSection">
+     {/* 7. TRUSTED CLIENT TESTIMONIAL (AUTO SLIDER SCREENSHOT UI) */}
+      <section
+        className="testimonialSection"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
         <div className="testimonialContainer">
           <span className="redLabel textCenter">TRUSTED CLIENT</span>
           <h2 className="testimonialHeading">Trusted Around the World</h2>
-          
+
           <div className="sliderViewport">
-            <span className="sliderArrow">‹</span>
-            <div className="testimonialBodyText">
-              "Good quality work. Whenever we have any requirements of sports wear we always choose Cre8iveline because of their quality and also timely delivery."
-              <strong className="clientAuthor">Hakimi Sports</strong>
+            {/* Left Chevron */}
+            <button
+              type="button"
+              className="sliderArrow"
+              onClick={prevSlide}
+              aria-label="Previous Slide"
+            >
+              ‹
+            </button>
+
+            {/* Slide Body */}
+            <div className="testimonialCard" key={currentSlide}>
+              <div className="clientLogoContainer">
+                {testimonialsData[currentSlide].logo}
+              </div>
+
+              <p className="testimonialBodyText">
+                "{testimonialsData[currentSlide].quote}"
+              </p>
+
+              <h4 className="clientAuthor">
+                {testimonialsData[currentSlide].author}
+              </h4>
             </div>
-            <span className="sliderArrow">›</span>
+
+            {/* Right Chevron */}
+            <button
+              type="button"
+              className="sliderArrow"
+              onClick={nextSlide}
+              aria-label="Next Slide"
+            >
+              ›
+            </button>
+          </div>
+
+          {/* 4 Dots Indicators */}
+          <div className="sliderDots">
+            {testimonialsData.map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                className={`dot ${currentSlide === index ? "activeDot" : ""}`}
+                onClick={() => setCurrentSlide(index)}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
       </section>
-
       {/* 8. BRAND LOGOS CAROUSEL STRIP */}
       <section className="brandsStripSection">
         <div className="brandsStripContainer">
