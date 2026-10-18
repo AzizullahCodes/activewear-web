@@ -431,22 +431,119 @@ body {
 .ctaInnerContent { position: relative; z-index: 10; }
 .ctaQuoteButton { background-color: #ffffff; color: #c91818; font-size: 13px; font-weight: 700; text-decoration: none; padding: 16px 38px; border-radius: 4px; box-shadow: 0px 4px 12px rgba(0,0,0,0.15); transition: background-color 0.2s; }
 .ctaQuoteButton:hover { background-color: #f5f5f5; }
+/* frequently asked questions section */
+.faqSection {
+  width: 100%;
+  padding: 60px 20px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  font-family: inherit;
+}
 
-/* FAQ ACCORDION PANEL */
-.faqSection { width: 100%; padding: 80px 24px; background-color: #ffffff; font-family: sans-serif; }
-.faqContainer { max-width: 800px; margin: 0 auto; }
-.faqMainTitle { font-size: 32px; font-weight: 800; color: #111111; text-align: center; margin: 0 0 48px 0; }
-.accordionWrapper { border: 1px solid #eaeaea; border-radius: 4px; overflow: hidden; }
-.faqRowItem { border-bottom: 1px solid #eaeaea; background-color: #ffffff; }
-.faqRowItem:last-child { border-bottom: none; }
-.faqHeaderBlock { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; cursor: pointer; transition: background-color 0.2s; user-select: none; }
-.faqHeaderBlock:hover { background-color: #fafafa; }
-.faqQuestionText { font-size: 14px; font-weight: 700; color: #111111; padding-right: 15px; }
-.faqToggleSign { font-size: 18px; font-weight: 700; color: #111111; flex-shrink: 0; }
-.faqAnswerBlock { padding: 0 24px 20px 24px; background-color: #ffffff; }
-.faqAnswerBlock p { font-size: 13.5px; color: #555555; line-height: 1.6; margin: 0; text-align: left; }
-.faqActive .faqQuestionText, .faqActive .faqToggleSign { color: #c91818; }
+.faqContainer {
+  width: 100%;
+  max-width: 900px;
+}
 
+.faqMainTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #111827;
+}
+
+.accordionWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faqRowItem {
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+.faqHeaderBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  gap: 16px;
+}
+
+.faqQuestionText {
+  font-size: 1.1rem;
+  font-family: sans-serif;
+  font-weight: 400;
+  color: #1f2937;
+  transition: color 0.25s ease;
+  line-height: 1.5;
+}
+
+.faqToggleSign {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #1f2937;
+  line-height: 1;
+  transition: color 0.25s ease, transform 0.2s ease;
+}
+
+/* Jab active hoga to Question aur +/- Red ho jayenge */
+.faqRowItem.faqActive .faqQuestionText,
+.faqRowItem.faqActive .faqToggleSign {
+  color: #dc2626; /* Pure bold red */
+}
+
+.faqAnswerBlock {
+  margin-top: 14px;
+  padding-right: 24px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.faqAnswerBlock p {
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Smooth fade in effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .faqMainTitle {
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+  }
+
+  .faqQuestionText {
+    font-size: 0.98rem;
+  }
+
+  .faqToggleSign {
+    font-size: 1.3rem;
+  }
+
+  .faqAnswerBlock p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+}
 /* DARK FOOTER MAP SYSTEM */
 .footerSection { width: 100%; background-color: #0b0b0b; padding: 60px 24px 0 24px; font-family: sans-serif; color: #ffffff; }
 .footerMainGrid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.3fr 0.8fr 0.8fr 1.1fr; gap: 40px; padding-bottom: 50px; }

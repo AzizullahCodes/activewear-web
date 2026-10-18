@@ -111,6 +111,7 @@ const [currentSlide, setCurrentSlide] = useState(0);
   const autoPlayRef = useRef(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const [faqOpen, setFaqOpen] = useState([true, false, false, false]);
+  const [activeAccordionId, setActiveAccordionId] = useState(null);
 
   useEffect(() => {
     setIsAnimating(true);
@@ -159,6 +160,35 @@ const [currentSlide, setCurrentSlide] = useState(0);
 
     return () => clearInterval(interval);
   }, [isPause]);
+
+
+  const handleAccordionToggle = (selectedId) => {
+    setActiveAccordionId((prevId) => (prevId === selectedId ? null : selectedId));
+  };
+
+  // Naya data array name
+  const brandQuestionsList = [
+    {
+      id: 101,
+      questionTitle: "If regular size charts don't fit me perfectly, can you do 'made-to-measure' clothing?",
+      answerContent: "Although we have an extensive list of sizes, if these don't fit, ask us about our personalized initiative, where we can tailor your fitness & sportswear to your exact measurements. Our dedicated master tailors review every seam to ensure an athletic, comfortable drape across high-movement zones during intense routines."
+    },
+    {
+      id: 102,
+      questionTitle: "Is there anything I can do to ensure that my design will print well?",
+      answerContent: "To ensure high quality printing outcomes, please provide vectorized graphics files formats (.ai, .eps, or high-res vector PDFs) with all embedded font tracks outlined. Ensure your color profiles are set directly to CMYK or exact Pantone shades to avoid chromatic skewing when transferring from digital displays to fabric textures."
+    },
+    {
+      id: 103,
+      questionTitle: "Is there a minimum order quantity and do you offer discounts for bulk purchases?",
+      answerContent: "We have absolutely no minimum order constraints! You can order a single personalized jersey. However, tier discounts scale up automatically on wholesale volume orders starting from batches of twelve units and above, significantly cutting unit costs on commercial shipping tiers."
+    },
+    {
+      id: 104,
+      questionTitle: "I want a style that you don't have on your website, can you help me develop something new?",
+      answerContent: "Absolutely! Our graphic apparel engineers can prototype completely unique custom uniform mockups tailored specifically to your visual reference sheets. We handle custom pantone color-matching, custom panel cuts, breathable mesh zoning, and bespoke athletic stitch patterns from scratch."
+    }
+  ];
   return (
     <div>
       {/* GLOBAL NAVBAR MODULES */}
@@ -488,61 +518,37 @@ const [currentSlide, setCurrentSlide] = useState(0);
       </section>
       {/* 10. FREQUENTLY ASKED QUESTION ACCORDION */}
       <section className="faqSection">
-        <div className="faqContainer">
-          <h2 className="faqMainTitle">Frequently Asked Question</h2>
-          
-          <div className="accordionWrapper">
-            <div className={`faqRowItem ${faqOpen[0] ? 'faqActive' : ''}`}>
-              <div className="faqHeaderBlock" onClick={() => toggleFaq(0)}>
-                <span className="faqQuestionText">If regular size charts don't fit me perfectly, can you do 'made-to-measure' clothing?</span>
-                <span className="faqToggleSign">{faqOpen[0] ? '−' : '+'}</span>
-              </div>
-              {faqOpen[0] && (
-                <div className="faqAnswerBlock">
-                  <p>Although we have an extensive list of sizes, if these don't fit, ask us about our personalized initiative, where we can tailor your fitness & sportswear to your exact measurements.</p>
-                </div>
-              )}
-            </div>
+      <div className="faqContainer">
+        <h2 className="faqMainTitle">Frequently Asked Question</h2>
 
-            <div className={`faqRowItem ${faqOpen[1] ? 'faqActive' : ''}`}>
-              <div className="faqHeaderBlock" onClick={() => toggleFaq(1)}>
-                <span className="faqQuestionText">Is there anything I can do to ensure that my design will print well?</span>
-                <span className="faqToggleSign">{faqOpen[1] ? '−' : '+'}</span>
-              </div>
-              {faqOpen[1] && (
-                <div className="faqAnswerBlock">
-                  <p>To ensure high quality printing outcomes, please provide vectorized graphics files formats (.ai, .eps, or high-res vector PDFs) with all embedded font tracks outlined.</p>
-                </div>
-              )}
-            </div>
+        <div className="accordionWrapper">
+          {brandQuestionsList.map((entry) => {
+            const isRowExpanded = activeAccordionId === entry.id;
 
-            <div className={`faqRowItem ${faqOpen[2] ? 'faqActive' : ''}`}>
-              <div className="faqHeaderBlock" onClick={() => toggleFaq(2)}>
-                <span className="faqQuestionText">Is there a minimum order quantity and do you offer discounts for bulk purchases?</span>
-                <span className="faqToggleSign">{faqOpen[2] ? '−' : '+'}</span>
-              </div>
-              {faqOpen[2] && (
-                <div className="faqAnswerBlock">
-                  <p>We have absolutely no minimum order constraints! You can order a single personalized jersey. However, tier discounts scale up automatically on wholesale volume orders.</p>
+            return (
+              <div 
+                key={entry.id} 
+                className={`faqRowItem ${isRowExpanded ? 'faqActive' : ''}`}
+              >
+                <div 
+                  className="faqHeaderBlock" 
+                  onClick={() => handleAccordionToggle(entry.id)}
+                >
+                  <span className="faqQuestionText">{entry.questionTitle}</span>
+                  <span className="faqToggleSign">{isRowExpanded ? '−' : '+'}</span>
                 </div>
-              )}
-            </div>
 
-            <div className={`faqRowItem ${faqOpen[3] ? 'faqActive' : ''}`}>
-              <div className="faqHeaderBlock" onClick={() => toggleFaq(3)}>
-                <span className="faqQuestionText">I want a style that you don't have on your website, can you help me develop something new?</span>
-                <span className="faqToggleSign">{faqOpen[3] ? '−' : '+'}</span>
+                {isRowExpanded && (
+                  <div className="faqAnswerBlock">
+                    <p>{entry.answerContent}</p>
+                  </div>
+                )}
               </div>
-              {faqOpen[3] && (
-                <div className="faqAnswerBlock">
-                  <p>Absolutely! Our graphic apparel engineers can prototype completely unique custom uniform mockups tailored specifically to your visual reference sheets.</p>
-                </div>
-              )}
-            </div>
-          </div>
+            );
+          })}
         </div>
-      </section>
-
+      </div>
+    </section>
       {/* 11. FOOTER INTEGRATION NAVIGATION */}
       <footer className="footerSection">
         <div className="footerMainGrid">
