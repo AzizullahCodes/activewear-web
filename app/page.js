@@ -44,43 +44,27 @@ const testimonialsData = [
     quote:
       "Good quality work. Whenever we have any requirements of sports wear we always choose Cre8iveline because of their quality and also timely delivery.",
     logo: (
-      <div className="logoHakimi">
-        <svg viewBox="0 0 24 24" width="28" height="28" fill="#c91818">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-        </svg>
-        {/* <span className="logoTitle">ZAISH</span> */}
-         <span className="zaishZ">Z</span>
+      <div className="logoZaish">
+        <span className="zaishZ">Z</span>
         <span className="zaishText">AISH</span>
+        
       </div>
     )
   },
   {
     id: 3,
-    author: "Apex Athletics",
+    author: "Fabio C.",
     quote:
       "Exceptional stitching and fabric durable enough for international league games. Turnaround times were faster than estimated and customer communication was flawless.",
-    logo: (
-      <div className="logoApex">
-        <svg viewBox="0 0 24 24" width="28" height="28" fill="#111111">
-          <path d="M12 2L1 21h22L12 2zm0 4.5l6.5 12.5h-13L12 6.5z" />
-        </svg>
-        <span className="logoTitle">APEX ATHLETICS</span>
-      </div>
-    )
+   
+    
   },
   {
     id: 4,
-    author: "Velocity Club",
+    author: "Haikimi Sports",
     quote:
       "Consistent sublimation printing quality and premium breathable mesh materials. Our reliable manufacturing partner for three seasons straight.",
-    logo: (
-      <div className="logoVelocity">
-        <svg viewBox="0 0 24 24" width="28" height="28" fill="#c91818">
-          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-        </svg>
-        <span className="logoTitle">VELOCITY CLUB</span>
-      </div>
-    )
+   
   }
 ];
 
