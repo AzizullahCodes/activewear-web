@@ -1,0 +1,232 @@
+.blockSpan {
+  display: block;
+}
+
+/* ==========================================================
+   1. CORE CONTAINER RESET SETTINGS
+   ========================================================== */
+.heroSection, .heroSection *, 
+.showcaseSection, .showcaseSection *, 
+.whyChooseSection, .whyChooseSection *,
+.productsSection, .productsSection *,
+.catalogueSection, .catalogueSection *,
+.processSection, .processSection *,
+.testimonialSection, .testimonialSection *,
+.brandsStripSection, .brandsStripSection *,
+.ctaBannerSection, .ctaBannerSection *,
+.faqSection, .faqSection *,
+.footerSection, .footerSection * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0; padding: 0; background-color: #ffffff;
+}
+
+.sectionHeading {
+  font-size: 34px; font-weight: 800; color: #111111; line-height: 1.25; margin: 0 0 24px 0;
+}
+
+.redLabel {
+  display: block; font-size: 13px; font-weight: 700; color: #c91818; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
+}
+
+.textCenter { text-align: center; }
+
+/* BANNER & MARQUEE LOOP */
+.heroSection { position: relative; width: 100%; overflow: hidden; font-family: sans-serif; }
+.heroBody { position: relative; width: 100%; height: 480px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 50px; }
+.heroBgWrapper { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+.heroBgImage { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.heroOverlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.1) 60%); }
+.heroContent { position: relative; z-index: 10; text-align: center; width: 100%; padding: 0 20px; }
+.heroTitle { color: #ffffff; font-size: 32px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.3; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); margin: 0; }
+
+.tickerStrip { background-color: #c91818; border-top: 2px solid #b01010; width: 100%; overflow: hidden; padding: 20px 0; position: relative; z-index: 15; }
+.tickerTrack { display: flex; width: max-content; gap: 40px; transform: translateX(100vw); will-change: transform; }
+.runTickerOnce { animation: slideLeftOnce 24s linear forwards; animation-iteration-count: 1; }
+.tickerItem { color: #ffffff; font-size: 30px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+
+@keyframes slideLeftOnce {
+  0% { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
+}
+/* SHOWCASE MATRIX */
+.showcaseSection { width: 100%; padding: 80px 24px 60px 24px; font-family: sans-serif; }
+.showcaseContainer { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
+.showcaseGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.showcaseCard { border-radius: 12px; overflow: hidden; box-shadow: 0px 8px 24px rgba(0,0,0,0.12); background-color: #fcfcfc; transition: transform 0.3s ease; }
+.cardImage { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mainJerseyCard { height: 480px; }
+.gridRightCol { display: flex; flex-direction: column; gap: 20px; }
+.promoCard { height: 170px; }
+.workwearCard { height: 290px; }
+.showcaseText { font-size: 14px; color: #555555; line-height: 1.65; margin: 0 0 32px 0; text-align: justify; }
+.featuresBadgeGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; }
+.badgeItem { display: flex; align-items: center; gap: 12px; }
+.badgeIcon { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+.checkIcon { background-color: #ffeaea; color: #ff3b30; }
+.crossIcon { background-color: #f3e8ff; color: #af52de; }
+.starIcon { background-color: #fff9db; color: #fab005; font-size: 13px; }
+.badgeText { font-size: 15px; font-weight: 700; color: #1a1a1a; }
+
+.whyChooseSection { width: 100%; padding: 60px 24px; font-family: sans-serif; }
+.whyChooseContainer { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: flex-start; }
+.infoBlock { margin-bottom: 28px; }
+.infoSubheading { font-size: 20px; font-weight: 700; color: #111111; margin: 0 0 10px 0; }
+.infoDescription { font-size: 14px; color: #555555; line-height: 1.65; margin: 0; text-align: justify; }
+.whyChooseGraphicWrapper { position: relative; padding-top: 10px; }
+.studioImageCard { width: 100%; height: 380px; border-radius: 16px; overflow: hidden; box-shadow: 0px 12px 32px rgba(0,0,0,0.15); position: relative; z-index: 5; }
+.decorativeDotPattern { position: absolute; bottom: -25px; left: -25px; width: 90px; height: 90px; background-image: radial-gradient(#ff3b30 20%, transparent 20%); background-size: 10px 10px; opacity: 0.15; z-index: 1; }
+
+.productsSection { width: 100%; padding: 60px 24px; font-family: sans-serif; }
+.productsContainer { max-width: 1200px; margin: 0 auto; text-align: center; }
+.productsSectionHeading { font-size: 32px; font-weight: 800; color: #111111; margin: 0 0 48px 0; }
+.productsGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.productCard { background-color: #ffffff; border: 1px solid #eef2f5; border-radius: 4px; overflow: hidden; box-shadow: 0px 4px 16px rgba(0,0,0,0.04); display: flex; flex-direction: column; transition: all 0.3s ease; }
+.productCard:hover { transform: translateY(-6px); box-shadow: 0px 12px 24px rgba(0,0,0,0.08); }
+.productImageWrapper { width: 100%; height: 320px; overflow: hidden; }
+.productImage { width: 100%; height: 100%; object-fit: cover; }
+.productCardFooter { padding: 18px 12px; background-color: #ffffff; border-top: 1px solid #f1f4f6; }
+.productTitle { font-size: 14px; font-weight: 700; color: #111111; margin: 0; }
+
+/* CATALOGUE BUBBLES */
+.catalogueSection { width: 100%; padding: 70px 24px; background-color: #ffffff; font-family: sans-serif; text-align: center; }
+.catalogueContainer { max-width: 1200px; margin: 0 auto; }
+.catalogueHeading { font-size: 32px; font-weight: 800; color: #111111; margin: 0 0 16px 0; line-height: 1.25; }
+.catalogueSubtext { font-size: 13.5px; color: #666666; max-width: 650px; margin: 0 auto 50px auto; line-height: 1.6; }
+.circleItemsGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px 24px; }
+.circleCard { display: flex; flex-direction: column; align-items: center; cursor: pointer; }
+.circleFrame { width: 170px; height: 170px; border-radius: 50%; background-color: #ffffff; border: 1px solid #eaeaea; display: flex; align-items: center; justify-content: center; padding: 20px; box-shadow: 0px 6px 20px rgba(0,0,0,0.04); transition: transform 0.3s ease; }
+.circleCard:hover .circleFrame { transform: scale(1.05); }
+.circleFrame img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.circleTitle { font-size: 14px; font-weight: 600; color: #444444; margin-top: 16px; }
+
+/* PROCESS TIMELINE */
+.processSection { width: 100%; padding: 60px 24px; background-color: #000000; font-family: sans-serif; color: #ffffff; }
+.processContainer { max-width: 1200px; margin: 0 auto; }
+.processHeaderRow { display: flex; justify-content: center; align-items: center; gap: 16px; margin-bottom: 50px; flex-wrap: wrap; }
+.processMainHeading { font-size: 34px; font-weight: 900; font-style: italic; color: #ffffff; margin: 0; letter-spacing: -0.5px; }
+.processSubBadge { background-color: #c91818; color: #ffffff; font-size: 12px; font-weight: 800; padding: 4px 12px; border-radius: 2px; letter-spacing: 0.5px; }
+.stepsFlexGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+.stepBlock { display: flex; flex-direction: column; }
+.stepIconRow { height: 50px; display: flex; align-items: center; margin-bottom: 20px; }
+.stepIconImage { height: 100%; width: auto; object-fit: contain; }
+.stepTitle { font-size: 16px; font-weight: 800; color: #ffffff; margin: 0 0 10px 0; }
+.stepText { font-size: 13px; color: #aaaaaa; line-height: 1.5; margin: 0; text-align: left; }
+/* TESTIMONIAL VIEWPORT & BRANDS */
+.testimonialSection { width: 100%; padding: 80px 24px; background-color: #ffffff; font-family: sans-serif; text-align: center; }
+.testimonialContainer { max-width: 900px; margin: 0 auto; }
+.testimonialHeading { font-size: 32px; font-weight: 800; color: #111111; margin: 0 0 40px 0; }
+.sliderViewport { display: flex; align-items: center; justify-content: space-between; gap: 30px; margin-top: 20px; }
+.sliderArrow { font-size: 32px; color: #bbbbbb; cursor: pointer; user-select: none; transition: color 0.2s; }
+.sliderArrow:hover { color: #c91818; }
+.testimonialBodyText { font-size: 16px; font-style: italic; color: #555555; line-height: 1.8; font-weight: 500; }
+.clientAuthor { display: block; font-style: normal; font-size: 14px; font-weight: 700; color: #111111; margin-top: 24px; text-transform: uppercase; }
+
+.brandsStripSection { width: 100%; padding: 40px 24px 50px 24px; background-color: #ffffff; font-family: sans-serif; border-top: 1px dashed #eaeaea; text-align: center; }
+.brandsStripContainer { max-width: 1200px; margin: 0 auto; }
+.brandSectionLabel { display: block; font-size: 13px; font-weight: 700; color: #222222; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 36px; }
+.brandLogosRow { display: flex; justify-content: center; align-items: center; gap: 60px; flex-wrap: wrap; margin-bottom: 30px; }
+.brandLogoImg { max-height: 38px; width: auto; object-fit: contain; filter: grayscale(1); opacity: 0.8; transition: all 0.3s; }
+.brandLogoImg:hover { filter: grayscale(0); opacity: 1; }
+.brandDotsIndicator { display: flex; justify-content: center; gap: 8px; }
+.dotIndicator { width: 6px; height: 6px; border-radius: 50%; background-color: #dddddd; cursor: pointer; }
+.activeDot { background-color: #c91818; width: 14px; border-radius: 4px; }
+
+/* ORANGE CTA BANNER */
+.ctaBannerSection { position: relative; width: 100%; height: 260px; overflow: hidden; display: flex; align-items: center; justify-content: flex-start; padding-left: 10%; }
+.ctaBannerBg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+.ctaBgImg { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.ctaDarkenerOverlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,0,0,0.3), transparent); }
+.ctaInnerContent { position: relative; z-index: 10; }
+.ctaQuoteButton { background-color: #ffffff; color: #c91818; font-size: 13px; font-weight: 700; text-decoration: none; padding: 14px 28px; border-radius: 4px; box-shadow: 0px 4px 12px rgba(0,0,0,0.15); transition: background-color 0.2s; }
+.ctaQuoteButton:hover { background-color: #f5f5f5; }
+
+/* FAQ ACCORDION PANEL */
+.faqSection { width: 100%; padding: 80px 24px; background-color: #ffffff; font-family: sans-serif; }
+.faqContainer { max-width: 800px; margin: 0 auto; }
+.faqMainTitle { font-size: 32px; font-weight: 800; color: #111111; text-align: center; margin: 0 0 48px 0; }
+.accordionWrapper { border: 1px solid #eaeaea; border-radius: 4px; overflow: hidden; }
+.faqRowItem { border-bottom: 1px solid #eaeaea; background-color: #ffffff; }
+.faqRowItem:last-child { border-bottom: none; }
+.faqHeaderBlock { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; cursor: pointer; transition: background-color 0.2s; user-select: none; }
+.faqHeaderBlock:hover { background-color: #fafafa; }
+.faqQuestionText { font-size: 14px; font-weight: 700; color: #111111; padding-right: 15px; }
+.faqToggleSign { font-size: 18px; font-weight: 700; color: #111111; flex-shrink: 0; }
+.faqAnswerBlock { padding: 0 24px 20px 24px; background-color: #ffffff; }
+.faqAnswerBlock p { font-size: 13.5px; color: #555555; line-height: 1.6; margin: 0; text-align: left; }
+.faqActive .faqQuestionText, .faqActive .faqToggleSign { color: #c91818; }
+
+/* DARK FOOTER MAP SYSTEM */
+.footerSection { width: 100%; background-color: #0b0b0b; padding: 60px 24px 0 24px; font-family: sans-serif; color: #ffffff; }
+.footerMainGrid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.3fr 0.8fr 0.8fr 1.1fr; gap: 40px; padding-bottom: 50px; }
+.footerBrandColumn { display: flex; flex-direction: column; }
+.footerLogoMain { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+.fLogoAWC { font-size: 26px; font-weight: 900; font-style: italic; color: #ffffff; line-height: 1; letter-spacing: -1px; }
+.fLogoBox { border: 2px solid #ffffff; padding: 1px 4px; display: flex; flex-direction: column; }
+.fTextActivewear { font-size: 10px; font-weight: 800; color: #ffffff; text-transform: uppercase; line-height: 1; }
+.fTextCustom { font-size: 12px; font-weight: 900; background-color: #ffffff; color: #0b0b0b; padding: 1px 2px; text-transform: uppercase; line-height: 1; margin-top: 1px; }
+.fLogoSubtext { font-size: 7px; font-weight: 700; color: #888888; margin-bottom: 20px; }
+.footerDescriptionText { font-size: 13px; color: #999999; line-height: 1.6; margin: 0; text-align: left; }
+
+.footerColumnTitle { font-size: 15px; font-weight: 700; color: #ffffff; margin: 0 0 24px 0; text-transform: uppercase; letter-spacing: 0.5px; }
+.footerLinksList { list-style: none; padding: 0; margin: 0; }
+.footerLinksList li { margin-bottom: 12px; }
+.footerLinksList a { color: #999999; text-decoration: none; font-size: 13.5px; transition: color 0.2s; }
+.footerLinksList a:hover { color: #c91818; }
+.contactDetailRow { font-size: 13.5px; color: #999999; margin: 0 0 14px 0; }
+.followUsHeading { font-size: 14px; font-weight: 700; color: #ffffff; margin: 24px 0 14px 0; text-transform: uppercase; }
+.footerSocialIconsRow { display: flex; gap: 10px; }
+.fSocialBadge { width: 28px; height: 28px; border-radius: 50%; border: 1px solid #444444; background-color: transparent; color: #ffffff; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.2s; }
+.fSocialBadge:hover { background-color: #c91818; border-color: #c91818; }
+.footerBottomCopyrightRow { width: 100%; border-top: 1px solid #222222; padding: 24px 24px; text-align: center; }
+.footerBottomCopyrightRow p { font-size: 12px; color: #777777; margin: 0; }
+
+/* FLOATING WIDGET ELEMENT ENGINE */
+.whatsappWidget { position: fixed; bottom: 30px; right: 24px; display: flex; align-items: center; gap: 8px; text-decoration: none; z-index: 9999; }
+.whatsappIconCircle { background-color: #25D366; width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(37,211,102,0.4); position: relative; transition: transform 0.2s ease; }
+.whatsappIconCircle::before { content: ''; position: absolute; top: -4px; left: -4px; right: -4px; bottom: -4px; border-radius: 50%; border: 2px solid #25D366; animation: wavePulse 1.8s infinite ease-out; opacity: 0; }
+.whatsappTooltip { background-color: #ffffff; color: #333333; font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.15); border: 1px solid #e2e8f0; white-space: nowrap; pointer-events: none; }
+.whatsappWidget:hover .whatsappIconCircle { transform: scale(1.08); }
+
+/* MOBILE CONSTRAINTS AND WRAPPERS BREAKPOINTS */
+@media (max-width: 1024px) {
+  .showcaseContainer, .whyChooseContainer { grid-template-columns: 1fr; gap: 40px; }
+  .productsGrid, .circleItemsGrid { grid-template-columns: repeat(2, 1fr); gap: 30px 20px; }
+  .stepsFlexGrid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+  .footerMainGrid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .sectionHeading, .productsSectionHeading, .catalogueHeading, .processMainHeading, .testimonialHeading, .faqMainTitle { font-size: 28px; }
+  .studioImageCard { height: 340px; }
+}
+
+@media (max-width: 768px) {
+  .heroBody { height: 320px; padding-bottom: 30px; }
+  .heroTitle { font-size: 20px; line-height: 1.4; }
+  .tickerStrip { padding: 10px 0; }
+  .tickerItem { font-size: 20px; }
+  .showcaseSection, .whyChooseSection, .productsSection, .catalogueSection, .processSection, .testimonialSection, .faqSection { padding: 40px 16px; }
+  .mainJerseyCard { height: 380px; }
+  .promoCard { height: 140px; }
+  .workwearCard { height: 240px; }
+  .productImageWrapper { height: 280px; }
+  .whatsappIconCircle { width: 46px; height: 46px; }
+  .whatsappTooltip { display: none; }
+  .sliderViewport { gap: 15px; }
+  .testimonialBodyText { font-size: 14px; }
+  .brandLogosRow { gap: 30px; }
+  .ctaBannerSection { padding-left: 5%; height: 200px; }
+}
+
+@media (max-width: 576px) {
+  .showcaseGrid, .productsGrid, .circleItemsGrid, .stepsFlexGrid, .footerMainGrid { grid-template-columns: 1fr; }
+  .mainJerseyCard, .promoCard, .workwearCard, .productImageWrapper, .studioImageCard { height: 260px; }
+  .circleFrame { width: 140px; height: 140px; margin: 0 auto; }
+  .featuresBadgeGrid { grid-template-columns: 1fr; gap: 12px; }
+  .processHeaderRow { flex-direction: column; gap: 8px; }
+}
+
+@media (max-width: 480px) {
+  .heroBody { height: 230px; padding-bottom: 20px; }
+  .heroTitle { font-size: 14px; }
+}
