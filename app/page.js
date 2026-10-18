@@ -22,6 +22,7 @@ import stepOne from '../public/stepOne.jpg'
 import stepTwo from '../public/stepTwo.jpg'
 import stepThree from '../public/stepThree.jpg'
 import stepFour from '../public/stepFour.jpg';
+import sportsPlayers from '../public/sportsPlayers.jpg';
 
 // 4 Complete Testimonials with inline SVGs matching your screenshot
 const testimonialsData = [
@@ -83,6 +84,18 @@ const faqData = [
   }
 ];
 
+
+// brand slider
+const brands = [
+  { id: 1, name: 'TBWA', src: '/tbwa.png' },
+  { id: 2, name: 'Bayut', src: '/bayut.png' },
+  { id: 3, name: 'Dubizzle', src: '/dubizzle.png' },
+  { id: 4, name: 'Plug N Point', src: '/plugpoint.png' },
+  { id: 5, name: 'Danube Properties', src: '/danuber.png' },
+  { id: 6, name: 'Brand 6', src: '/puma.png' },
+  { id: 7, name: 'Brand 7', src: '/quitica.png' },
+  { id: 8, name: 'Brand 8', src: '/interem.png' },
+];
 import Link from 'next/link';
 import { FaWhatsapp, FaCheck, FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa';
 import Topbar from "@/components/topbar/topbar";
@@ -90,6 +103,8 @@ import Navbar from "@/components/navbar/navbar";
 import './page.css';
 
 export default function Home() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPause, setIsPause] = useState(false);
 const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [activeFaq, setActiveFaq] = useState(null);
@@ -132,6 +147,18 @@ const [currentSlide, setCurrentSlide] = useState(0);
   const toggleFaq = (index) => {
     setActiveFaq((prev) => (prev === index ? null : index));
   }
+
+  //
+  // Auto slide every 3 seconds
+  useEffect(() => {
+    if (isPause) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % brands.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [isPause]);
   return (
     <div>
       {/* GLOBAL NAVBAR MODULES */}
@@ -388,6 +415,8 @@ const [currentSlide, setCurrentSlide] = useState(0);
             </button>
           </div>
 
+
+
           {/* 4 Dots Indicators */}
           <div className="sliderDots">
             {testimonialsData.map((_, index) => (
@@ -403,30 +432,54 @@ const [currentSlide, setCurrentSlide] = useState(0);
         </div>
       </section>
       {/* 8. BRAND LOGOS CAROUSEL STRIP */}
-      <section className="brandsStripSection">
-        <div className="brandsStripContainer">
-          <span className="brandSectionLabel">TRUSTED 120+ BRAND COMPANY</span>
-          <div className="brandLogosRow">
-            <img src="/logo-bayut.png" alt="Bayut" className="brandLogoImg" />
-            <img src="/logo-dubizzle.png" alt="Dubizzle" className="brandLogoImg" />
-            <img src="/logo-plugnpoint.png" alt="Plug n Point" className="brandLogoImg" />
-            <img src="/logo-danube.png" alt="Danube Properties" className="brandLogoImg" />
-            <img src="/logo-puma.png" alt="Puma" className="brandLogoImg" />
-          </div>
-          <div className="brandDotsIndicator">
-            <span className="dotIndicator"></span>
-            <span className="dotIndicator activeDot"></span>
-            <span className="dotIndicator"></span>
-            <span className="dotIndicator"></span>
-            <span className="dotIndicator"></span>
-          </div>
-        </div>
-      </section>
+   <section
+      className="slider-section"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={() => setIsPaused(true)}
+      onTouchEnd={() => setIsPaused(false)}
+    >
+      <h2 className="slider-heading">TRUSTED 120+ BRAND COMPANY</h2>
 
+      <div className="slider-container">
+        <div
+          className="slider-track"
+          style={{
+            transform: `translateX(calc(-${currentIndex} * (100% / var(--items-visible))))`,
+          }}
+        >
+          {[...brands, ...brands].map((brand, index) => (
+            <div key={`${brand.id}-${index}`} className="slide-item">
+              <div className="image-wrapper">
+                <Image
+                  src={brand.src}
+                  alt={brand.name}
+                  width={300}
+                  height={300}
+                  className="responsive-brand-img"
+                  priority={index < 3}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="dots-container">
+        {brands.map((_, idx) => (
+          <button
+            key={idx}
+            className={`dot ${currentIndex === idx ? 'active' : ''}`}
+            onClick={() => setCurrentIndex(idx)}
+            aria-label={`Go to slide ${idx + 1}`}
+          />
+        ))}
+      </div>
+    </section>
       {/* 9. ATHLETES ORANGE CTA BANNER */}
       <section className="ctaBannerSection">
         <div className="ctaBannerBg">
-          <img src="/cta-athletes-banner.jpg" alt="Athletes Banner" className="ctaBgImg" />
+          <Image src={sportsPlayers} alt="Athletes Banner" className="ctaBgImg" />
           <div className="ctaDarkenerOverlay"></div>
         </div>
         <div className="ctaInnerContent">

@@ -2,6 +2,8 @@
   display: block;
 }
 
+
+
 /* ==========================================================
    1. CORE CONTAINER RESET SETTINGS
    ========================================================== */
@@ -291,111 +293,143 @@ body {
   }
 }
 /* Brand Logo */
-.clientLogoWrapper {
-  margin-bottom: 24px;
-  height: 48px;
+/* Desktop: 4 ya 5 logos fit honge */
+:root {
+  --items-visible: 4;
+}
+
+.slider-section {
+  width: 100%;
+  padding: 40px 16px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.slider-heading {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: #111827;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.slider-container {
+  width: 100%;
+  max-width: 1300px;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  will-change: transform;
+}
+
+.slide-item {
+  flex: 0 0 calc(100% / var(--items-visible));
+  max-width: calc(100% / var(--items-visible));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Desktop size: 300px by 300px box */
+.image-wrapper {
+  width: 300px;
+  height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.clientLogoImg {
-  max-height: 45px;
-  max-width: 140px;
+.responsive-brand-img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
-/* Italic Quote Text */
-.testimonialBodyText {
-  font-size: 15.5px;
-  font-style: italic;
-  color: #555555;
-  line-height: 1.65;
-  margin: 0 0 22px 0;
-  text-align: center;
-  font-weight: 400;
-}
-
-/* Author Name */
-.clientAuthor {
-  font-size: 14.5px;
-  font-style: italic;
-  font-weight: 700;
-  color: #111111;
-  margin: 0;
-}
-
-/* 4 Circular Dots */
-.sliderDots {
+/* Dots Styling */
+.dots-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 8px;
-  margin-top: 36px;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
 .dot {
-  width: 6px;
-  height: 6px;
-  padding: 0;
-  border: none;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background-color: #d1d5db;
+  border: none;
+  padding: 0;
   cursor: pointer;
-  transition: background-color 0.25s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.dot.activeDot {
-  background-color: #111111;
-  transform: scale(1.15);
+.dot.active {
+  background-color: #374151;
+  transform: scale(1.25);
 }
 
-/* Smooth Fade In Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0.3;
-    transform: translateY(3px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+/* Tablet screens */
+@media (max-width: 1024px) {
+  :root {
+    --items-visible: 3;
   }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .testimonialHeading {
-    font-size: 26px;
+/* Mobile Screens: 140px by 140px box */
+@media (max-width: 640px) {
+  :root {
+    --items-visible: 2; /* Mobile screen par 2 items aik waqt me show honge */
   }
-  .sliderViewport {
-    gap: 8px;
+
+  .slide-item {
+    padding: 6px;
   }
-  .sliderArrow {
-    font-size: 28px;
-    padding: 6px 8px;
+
+  .image-wrapper {
+    width: 140px;
+    height: 140px;
   }
-  .testimonialBodyText {
-    font-size: 13.5px;
-    line-height: 1.55;
+
+  .slider-heading {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
   }
 }
-.brandsStripSection { width: 100%; padding: 40px 24px 50px 24px; background-color: #ffffff; font-family: sans-serif; border-top: 1px dashed #eaeaea; text-align: center; }
-.brandsStripContainer { max-width: 1200px; margin: 0 auto; }
-.brandSectionLabel { display: block; font-size: 13px; font-weight: 700; color: #222222; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 36px; }
-.brandLogosRow { display: flex; justify-content: center; align-items: center; gap: 60px; flex-wrap: wrap; margin-bottom: 30px; }
-.brandLogoImg { max-height: 38px; width: auto; object-fit: contain; filter: grayscale(1); opacity: 0.8; transition: all 0.3s; }
-.brandLogoImg:hover { filter: grayscale(0); opacity: 1; }
-.brandDotsIndicator { display: flex; justify-content: center; gap: 8px; }
-.dotIndicator { width: 6px; height: 6px; border-radius: 50%; background-color: #dddddd; cursor: pointer; }
-.activeDot { background-color: #c91818; width: 14px; border-radius: 4px; }
-
 /* ORANGE CTA BANNER */
 .ctaBannerSection { position: relative; width: 100%; height: 260px; overflow: hidden; display: flex; align-items: center; justify-content: flex-start; padding-left: 10%; }
 .ctaBannerBg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
 .ctaBgImg { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .ctaDarkenerOverlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,0,0,0.3), transparent); }
 .ctaInnerContent { position: relative; z-index: 10; }
-.ctaQuoteButton { background-color: #ffffff; color: #c91818; font-size: 13px; font-weight: 700; text-decoration: none; padding: 14px 28px; border-radius: 4px; box-shadow: 0px 4px 12px rgba(0,0,0,0.15); transition: background-color 0.2s; }
+.ctaQuoteButton { background-color: #ffffff; color: #c91818; font-size: 13px; font-weight: 700; text-decoration: none; padding: 16px 38px; border-radius: 4px; box-shadow: 0px 4px 12px rgba(0,0,0,0.15); transition: background-color 0.2s; }
 .ctaQuoteButton:hover { background-color: #f5f5f5; }
 
 /* FAQ ACCORDION PANEL */
@@ -479,6 +513,7 @@ body {
   .circleFrame { width: 140px; height: 140px; margin: 0 auto; }
   .featuresBadgeGrid { grid-template-columns: 1fr; gap: 12px; }
   .processHeaderRow { flex-direction: column; gap: 8px; }
+  
 }
 
 @media (max-width: 480px) {
